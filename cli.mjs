@@ -22,7 +22,7 @@ const createApp = async () => {
     description: "A Webpack App",
     main: "src/index.js",
     scripts: {
-      start: "webpack-dev-server --open",
+      start: "webpack-dev-server --open --mode development",
       build: "webpack --mode production",
     },
     devDependencies: {
@@ -38,7 +38,7 @@ const createApp = async () => {
   const srcPath = path.join(appRoot, "src");
   fs.mkdirSync(srcPath);
 
-  const indexContent = `import './style.css'`;
+  const indexContent = `import './styles.css'`;
 
   const indexFilePath = path.join(srcPath, "index.js");
   fs.writeFileSync(indexFilePath, indexContent);
