@@ -34,6 +34,22 @@ Generate-Webpack sets up a comprehensive webpack project template that includes:
 - Dev server setup for easy development and testing.
 - Sample entry and module files to help you get started.
 
+## Different Core Template Generation
+
+Generate-Webpack have different templates for different requirements to choose your core template.
+
+### Core Templates List
+
+- three : Full three.js template via webpack with all needed things.
+- three-basic : Basic three.js template with only essential things.
+- three-shader : Basic three.js template with custom shaders {vertex and fragment}.
+
+You can use the following command to generate with core template.
+
+```bash
+generate-webpack projectname --core=yourcoretemplate
+```
+
 ## Customization
 
 While Generate-Webpack provides a solid starting point for webpack projects, you're encouraged to customize it to fit your specific project requirements. You can modify the webpack configuration files, add or remove loaders and plugins, and organize your source code according to your preferences.
@@ -52,7 +68,7 @@ Generate-Webpack is open-source software licensed under the [MIT License](https:
 
 ## Contact
 
-For any questions or inquiries, you can reach us at aayushchouhan24@gmail.com.
+For any questions or inquiries, you can reach us at <aayushchouhan24@gmail.com>.
 
 ---
 
