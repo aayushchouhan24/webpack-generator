@@ -155,15 +155,15 @@ h1 {
   fs.writeFileSync(webpackConfigPath, webpackConfig);
 
   const packagesToInstall = [
+    "html-loader",
+    "html-webpack-plugin",
+    "mini-css-extract-plugin",
+    "raw-loader",
     "@babel/core",
     "@babel/preset-env",
     "babel-loader",
     "css-loader",
     "glslify-loader@",
-    "html-loader",
-    "html-webpack-plugin",
-    "mini-css-extract-plugin",
-    "raw-loader",
     "terser-webpack-plugin",
     "webpack",
     "webpack-cli",
