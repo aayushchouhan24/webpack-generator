@@ -204,7 +204,7 @@ camera.position.set(2.2, 0.8, 2.1)
 scene.add(camera)
 
 // Cube
-const cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial())
+const cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial())
 scene.add(cube)
 
 //Handle Resize
@@ -268,9 +268,9 @@ const shaderMaterial = new THREE.ShaderMaterial({
   fragmentShader: fragment
 })
 
-// Cube
-const cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), shaderMaterial)
-scene.add(cube)
+// Plane
+const plane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 1), shaderMaterial)
+scene.add(plane)
 
 //Handle Resize
 window.addEventListener('resize', () => {
