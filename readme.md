@@ -1,4 +1,6 @@
-# Generate-Webpack Readme
+# Generate Webpack - *Your Webpack Wizard!*
+
+![Generate-Webpack Logo](https://cdn.jsdelivr.net/gh/aayushchouhan24/webpack-generator@master/logo-banner.png)
 
 Generate-Webpack is an npm package that allows you to quickly create a fully-fledged webpack project template with ease. This tool streamlines the process of setting up a webpack-based project by automating the configuration and setup steps. Whether you're starting a new web development project or want to prototype an idea, Generate-Webpack gets you up and running with a functional webpack setup in no time.
 

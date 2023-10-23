@@ -78,7 +78,7 @@ const scene = new THREE.Scene()
 
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(2.2, 0.8, 2.1)
+camera.position.z=5
 scene.add(camera)
 
 //Geometry
@@ -191,8 +191,8 @@ const gui = new dat.GUI()
 
 //Sizes
 const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight
+width: window.innerWidth,
+height: window.innerHeight
 }
 
 // Scene
@@ -200,7 +200,7 @@ const scene = new THREE.Scene()
 
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(2.2, 0.8, 2.1)
+camera.position.z = 2
 scene.add(camera)
 
 // Cube
@@ -209,12 +209,12 @@ scene.add(cube)
 
 //Handle Resize
 window.addEventListener('resize', () => {
-  sizes.width = window.innerWidth
-  sizes.height = window.innerHeight
-  camera.aspect = sizes.width / sizes.height
-  camera.updateProjectionMatrix()
-  renderer.setSize(sizes.width, sizes.height)
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+sizes.width = window.innerWidth
+sizes.height = window.innerHeight
+camera.aspect = sizes.width / sizes.height
+camera.updateProjectionMatrix()
+renderer.setSize(sizes.width, sizes.height)
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
 // Renderer
@@ -229,13 +229,14 @@ controls.enableDamping = true
 
 const clock = new THREE.Clock()
 const loop = () => {
-  const elapsedTime = clock.getElapsedTime()
-  controls.update()
-  renderer.render(scene, camera)
-  window.requestAnimationFrame(loop)
+const elapsedTime = clock.getElapsedTime()
+cube.rotation.set(elapsedTime, elapsedTime,1 - elapsedTime)
+controls.update()
+renderer.render(scene, camera)
+window.requestAnimationFrame(loop)
 }
-loop()
-        `
+loop()`
+
       case 'three-shader':
         return `
 import './styles.css'
@@ -258,8 +259,8 @@ const sizes = {
 const scene = new THREE.Scene()
 
 // Camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(2.2, 0.8, 2.1)
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.01, 1000)
+camera.position.z = 10
 scene.add(camera)
 
 // ShaderMaterial
@@ -269,24 +270,29 @@ const shaderMaterial = new THREE.ShaderMaterial({
 })
 
 // Plane
-const plane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 1), shaderMaterial)
+const plane = new THREE.Mesh(new THREE.PlaneGeometry(10, 10, 16, 16), shaderMaterial)
 scene.add(plane)
 
 //Handle Resize
-window.addEventListener('resize', () => {
+const fit = () => {
   sizes.width = window.innerWidth
   sizes.height = window.innerHeight
   camera.aspect = sizes.width / sizes.height
+
+  // camera.fov = 2 * Math.atan(sizes.height / 2 ) * (180 / Math.PI) // Make 1 unit size as px
+
   camera.updateProjectionMatrix()
   renderer.setSize(sizes.width, sizes.height)
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-})
+}
+window.addEventListener('resize', fit)
 
 // Renderer
-const renderer = new THREE.WebGLRenderer()
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
 document.body.append(renderer.domElement)
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+fit()
 
 // Controls
 const controls = new OrbitControls(camera, renderer.domElement)
@@ -299,8 +305,7 @@ const loop = () => {
   renderer.render(scene, camera)
   window.requestAnimationFrame(loop)
 }
-loop()
-        `
+loop()`
       default:
         return `import './styles.css'`
     }
@@ -422,79 +427,86 @@ void main()
 
 
   const webpackConfig = `
-  const path = require('path');
-  const HtmlWebpackPlugin = require('html-webpack-plugin');
-  const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-  const TerserPlugin = require('terser-webpack-plugin');
-  const CopyWebpackPlugin = require('copy-webpack-plugin');
-  
-  const plugins = [
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'styles.css',
-    }),
-  ];
-  
-  // Check if the 'public' directory contains files
-  const fs = require('fs');
-  const publicDirectory = path.resolve(__dirname, 'public');
-  if (fs.existsSync(publicDirectory) && fs.readdirSync(publicDirectory).length > 0) {
-    plugins.push(
-      new CopyWebpackPlugin({
-        patterns: [
-          { from: 'public', to: '' },
-        ],
-      })
-    );
-  }
-  
-  module.exports = {
-    entry: './src/index.js',
-    output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.js',
-      publicPath: '/',
-    },
-    optimization: {
-      minimize: true,
-      minimizer: [new TerserPlugin()],
-    },
-    module: {
-      rules: [
-        {
-          test: /.(html)$/,
-          use: ['html-loader'],
-        },
-        {
-          test: /.js$/,
-          exclude: /node_modules/,
-          use: ['babel-loader'],
-        },
-        {
-          test: /.css$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
-        },
-        {
-          test: /.(jpg|png|gif|svg)$/,
-          type: 'asset/resource',
-          generator: {
-            filename: 'assets/images/[hash][ext]',
-          },
-        },
-        {
-          test: /.(glsl|frag|vert)$/,
-          use: ['raw-loader', 'glslify-loader'],
-        },
+  const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+const plugins = [
+  new HtmlWebpackPlugin({
+    template: './src/index.html',
+  }),
+  new MiniCssExtractPlugin({
+    filename: './styles.css',
+  }),
+]
+
+const fs = require('fs')
+const publicDirectory = path.resolve(__dirname, 'public')
+if (fs.existsSync(publicDirectory) && fs.readdirSync(publicDirectory).length > 0) {
+  plugins.push(
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public', to: '' },
       ],
+    })
+  )
+}
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: './bundle.js',
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
+  module: {
+    rules: [
+      {
+        test: /.(html)$/,
+        use: ['html-loader'],
+      },
+      {
+        test: /.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+      {
+        test: /.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /.(jpg|png|gif|svg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[hash][ext]',
+        },
+      },
+      {
+        test: /.(glsl|frag|vert)$/,
+        use: ['raw-loader', 'glslify-loader'],
+      },
+    ],
+  },
+  plugins: plugins,
+  devServer: {
+    host: 'local-ip',
+    port: 3000, 
+    open: true,
+    https: false,
+    allowedHosts: 'all',
+    hot: false,
+    watchFiles: ['src/**', 'public/**'], 
+    static: {
+      watch: true,
+      directory: path.join(__dirname, 'public'), 
     },
-    plugins: plugins,
-    devServer: {
-      static: path.resolve(__dirname, 'dist'),
-      port: 3000,
-    },
-  };  
+  },
+};
   `
 
   const webpackConfigPath = path.join(appRoot, "webpack.config.js")
