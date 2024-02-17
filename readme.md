@@ -2,27 +2,44 @@
 
 ![Generate-Webpack Logo](https://cdn.jsdelivr.net/gh/aayushchouhan24/webpack-generator@master/logo-banner.png)
 
-Generate-Webpack is an npm package that allows you to quickly create a fully-fledged webpack project template with ease. This tool streamlines the process of setting up a webpack-based project by automating the configuration and setup steps. Whether you're starting a new web development project or want to prototype an idea, Generate-Webpack gets you up and running with a functional webpack setup in no time.
-
 ## Installation
 
-To use Generate-Webpack, you need to have Node.js and npm (Node Package Manager) installed on your system. If you don't have them, you can download and install them from the [official Node.js website](https://nodejs.org/).
-
-Once you have Node.js and npm installed, you can install Generate-Webpack globally using the following command:
+Global Install
 
 ```bash
 npm install -g generate-webpack
 ```
 
-## Usage
-
-Generating a webpack project using Generate-Webpack is simple. After installing the package globally, you can use the following command to create a new webpack project:
+With npx
 
 ```bash
-generate-webpack projectname
+npx generate-webpack
 ```
 
-Replace `projectname` with the desired name of your project. This command will create a directory named `projectname` in the current location and set up a complete webpack project structure inside it.
+OR
+
+```bash
+npx gwp
+```
+
+## Usage
+
+```bash
+generate-webpack projectname -options
+```
+
+OR
+
+```bash
+gwp projectname -options
+```
+
+#### Options
+
+| Key        | Short | Options                                                                                                                                                                   | Description                         |
+| ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `--core= ` | `-c`  | webpack, three, three-basic, three-shader/three-shaders, three-master. For info click <a style =" color:#008CFF;  padding: 2px ; " href="#core-templates" >here.</a> | Select Core Template.               |
+| `--nopkg`  | `-n`  | none                                                                                                                                                                      | Stop npm package auto installation. |
 
 ## What's Included
 
@@ -40,18 +57,14 @@ Generate-Webpack sets up a comprehensive webpack project template that includes:
 
 Generate-Webpack have different templates for different requirements to choose your core template.
 
-### Core Templates List
+### Core Templates
 
-- three : Full three.js template via webpack with all needed things.
-- three-basic : Basic three.js template with only essential things.
-- three-shader : Basic three.js template with custom shaders {vertex and fragment}.
-- three-all : Master three.js template with custom shaders ,model,glass material,postprocessing ,etc.
-
-You can use the following command to generate with core template.
-
-```bash
-generate-webpack projectname --core=yourcoretemplate
-```
+| Core           | Description                                                                             |
+| -------------- | --------------------------------------------------------------------------------------- |
+| `three`        | Full three.js template via webpack with all needed things.                              |
+| `three-basic`  | Basic three.js template with only essential things.                                     |
+| `three-shader` | Basic three.js template with custom shaders {vertex and fragment}.                      |
+| `three-master` | Master three.js template with custom shaders ,model,glass material,postprocessing ,etc. |
 
 ## Customization
 
@@ -72,9 +85,3 @@ Generate-Webpack is open-source software licensed under the [MIT License](https:
 ## Contact
 
 For any questions or inquiries, you can reach us at <aayushchouhan24@gmail.com>.
-
----
-
-Start your webpack-powered project quickly and efficiently with Generate-Webpack. Say goodbye to manual setup and hello to streamlined development!
-
----

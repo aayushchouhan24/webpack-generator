@@ -1,19 +1,38 @@
 {
-  "name": "generate-webpack",
-  "version": "1.0.6",
-  "description": "A Webpack Starter Template Generator",
-  "bin": {
-    "generate-webpack": "./cli.mjs"
-  },
-  "preferGlobal": true,
-  "keywords": [],
-  "author": "Aayush Chouhan (Sheryians)",
-  "license": "ISC",
-  "dependencies": {
-    "ansi-colors": "^4.1.3",
-    "child_process": "^1.0.2",
-    "cli-progress": "^3.12.0",
-    "minimist": "^1.2.8",
-    "path": "^0.12.7"
-  }
+    "name": "generate-webpack",
+    "version": "2.0.0",
+    "description": "A command-line tool for creating projects with default or specified names and types.",
+    "main": "lib/index.js",
+    "bin": {
+        "generate-webpack": "./bin/generate-webpack.js",
+        "gwp": "./bin/generate-webpack.js"
+    },
+    "dependencies": {
+        "ansi-colors": "^4.1.3",
+        "child_process": "^1.0.2",
+        "cli-progress": "^3.12.0",
+        "commander": "^8.3.0",
+        "gsap": "^3.12.5",
+        "lil-gui": "^0.19.1",
+        "path": "^0.12.7",
+        "three": "^0.161.0"
+    },
+    "author": "Aayush Chouhan",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.23.9",
+        "@babel/preset-env": "^7.23.9",
+        "babel-loader": "^9.1.3",
+        "copy-webpack-plugin": "^12.0.2",
+        "css-loader": "^6.10.0",
+        "glslify-loader": "^2.0.0",
+        "html-loader": "^5.0.0",
+        "html-webpack-plugin": "^5.6.0",
+        "mini-css-extract-plugin": "^2.8.0",
+        "raw-loader": "^4.0.2",
+        "terser-webpack-plugin": "^5.3.10",
+        "webpack": "^5.90.2",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^5.0.2"
+    }
 }
