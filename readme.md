@@ -36,9 +36,9 @@ gwp projectname -options
 
 #### Options
 
-| Key        | Short | Options                                                                                                                                                                   | Description                         |
+| Options        | Short | templates                                                                                                                                                                   | Description                         |
 | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| `--core= ` | `-c`  | webpack, three, three-basic, three-shader/three-shaders, three-master. For info click <a style =" color:#008CFF;  padding: 2px ; " href="#core-templates" >here.</a> | Select Core Template.               |
+| `--core=` | `-c`  | <p>webpack, three, three-basic, three-shader/three-shaders,</p>three-master. For info click <a style =" color:#008CFF;  padding: 2px ; " href="#core-templates" >here.</a> | Select Core Template.               |
 | `--nopkg`  | `-n`  | none                                                                                                                                                                      | Stop npm package auto installation. |
 
 ## What's Included
@@ -53,11 +53,7 @@ Generate-Webpack sets up a comprehensive webpack project template that includes:
 - Dev server setup for easy development and testing.
 - Sample entry and module files to help you get started.
 
-## Different Core Template Generation
-
-Generate-Webpack have different templates for different requirements to choose your core template.
-
-### Core Templates
+## Core Templates
 
 | Core           | Description                                                                             |
 | -------------- | --------------------------------------------------------------------------------------- |
