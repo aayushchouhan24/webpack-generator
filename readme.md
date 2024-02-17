@@ -1,4 +1,4 @@
-# Generate Webpack - *Your Webpack Wizard!*
+# Generate Webpack - _Your Webpack Wizard!_
 
 ![Generate-Webpack Logo](https://cdn.jsdelivr.net/gh/aayushchouhan24/webpack-generator@master/logo-banner.png)
 
@@ -45,6 +45,7 @@ Generate-Webpack have different templates for different requirements to choose y
 - three : Full three.js template via webpack with all needed things.
 - three-basic : Basic three.js template with only essential things.
 - three-shader : Basic three.js template with custom shaders {vertex and fragment}.
+- three-all : Master three.js template with custom shaders ,model,glass material,postprocessing ,etc.
 
 You can use the following command to generate with core template.
 

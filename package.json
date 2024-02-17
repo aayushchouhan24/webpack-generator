@@ -1,6 +1,6 @@
 {
   "name": "generate-webpack",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "A Webpack Starter Template Generator",
   "bin": {
     "generate-webpack": "./cli.mjs"
