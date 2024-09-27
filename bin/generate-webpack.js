@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 
-const { program } = require('commander')
+const { Command } = require('commander')
 const { createProject } = require('../lib')
+const program = new Command()
 
 program
-  .arguments('[projectname]')
-  .option('--core <type>', 'Specify the core type')
-  .option('-c, --core <type>', 'Specify the core type (shorthand)')
+  .version('2.0.1')
+  .option('-c, --core <type>', 'specify core type')
   .option('-n, --nopkg', 'Do not install packages')
+  .arguments('[projectname]') // Make projectname optional
   .action((projectname, options) => {
-    const name = projectname || 'Webpack project'
-    const core = options.core || 'webpack'
-    installPackages = !options.nopkg 
-    createProject(name, core, installPackages)
-  })
+    const name = projectname || 'webpack-project'; // Default to 'webpack-project'
+    const core = options.core || 'webpack';
+    const installPackages = !options.nopkg;
+    createProject(name, core, installPackages);
+  });
 
 program.parse(process.argv)
